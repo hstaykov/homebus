@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  color: white;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  font-size: 40px;
+  padding: 10px;
+  padding-top: 50px;
+}
+
+.biggerFont {
+  font-size: 60px;
+}
+
+.gradient {
+  background-image: linear-gradient( red, #f06d06);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: none;
+  background-repeat: repeat-x;
+  font-size: 14px;
+  line-height: 110%;
+  color: #fff;
+  margin: 0;
+  background-color: #31435b;
+  background: -moz-linear-gradient(top, #31435b, #162c5f) #162c5e;
+  background: -ms-linear-gradient(top, #31435b, #162c5f) #162c5e;
+  background: -o-linear-gradient(top, #31435b, #162c5f) #162c5e;
+  background: -webkit-gradient(linear, center top, center bottom, from(#1d346b), to(#162c5f)) #162c5e;
+  background: -webkit-linear-gradient(top, #31435b, #612d2d) #162c5e;
+  background: linear-gradient(top, #31435b, #162c5f) #162c5e;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#31435b, endColorstr=#162c5f);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#31435b, endColorstr#162c5f);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.busNumber {
+  color: gold;
+  font-weight: bold;
+}
+.time{
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+.time:first-child {
+    font-size : 2em;
+    font-weight: bold;
+}
+.timesArray{
+  padding : 15px;
+}
