@@ -3,10 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import './Utils.js';
+import firebase from 'firebase'
 
 window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
+
+var config = {
+   apiKey: "AIzaSyCbp98cdDDWbHRl5bHARFH-Z5DH1hICfxY",
+   authDomain: "weather-station-c2d40.firebaseapp.com",
+   databaseURL: "https://weather-station-c2d40.firebaseio.com",
+   storageBucket: "weather-station-c2d40.appspot.com",
+   messagingSenderId: "915829445018"
+ };
+
+  firebase.initializeApp(config);
 
 class App extends Component {
   render() {
@@ -19,8 +30,7 @@ class App extends Component {
         </header>
         <div className="App-intro">
 
-        9  <FetchDemo subreddit="reactjs" busNumber="9" busStop="2007"/>
-        72  <FetchDemo subreddit="reactjs" busNumber="72" busStop="1904"/>
+        <FetchDemo/>
 
         </div>
       </div>
@@ -67,7 +77,8 @@ class FetchDemo extends React.Component {
     super(props);
 
     this.state = {
-        arrivals : null
+        data : null,
+        time : null
     };
   }
 
@@ -75,20 +86,22 @@ class FetchDemo extends React.Component {
     var that = this;
     getBusData();
     function getBusData(){
-  var url = "https://api-arrivals.sofiatraffic.bg/api/v1/arrivals/" + that.props.busStop + "/?line=" +that.props.busNumber +"&type=bus" ;
-  $.get(url, function(data, status) {
-      const arrivals1 = (data.lines[0].arrivals);
-      var array = [];
-      for(var i = 0 ; i<4; i++){
-        array.push(arrivals1[i].time);
-      }
-        that.setState({arrivals : array});
-    });
+      var ref = firebase.database().ref('home/currentTemperature/');
+      ref.once('value').then(function(data) {
+          console.log(data.val().temp);
+          that.setState({data: data.val()})
+
+      });
+      // ref.limit(1).once("child_added", function (snapshot) {
+        // that.setState({arrivals :snapshot.val()});
+      // });
+
+
   }
       setInterval(getBusData, 30000);
   }
     render(){
-      return this.state.arrivals ? <div><NumberList numbers={this.state.arrivals} busNumber={this.props.busNumber}/></div> : <div> Loading ... </div>
+      return this.state.data ? <div> Temperature: {this.state.data.temp}°C Humidity: {this.state.data.hum} % at {this.state.data.date.split(" ")[1]}</div> : <div> Loading ... </div>
     }
 }
 
