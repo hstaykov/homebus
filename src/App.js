@@ -4,6 +4,8 @@ import './App.css';
 import $ from 'jquery';
 import './Utils.js';
 import firebase from 'firebase'
+import Settings from './Settings.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 window.jQuery = $;
 window.$ = $;
@@ -31,7 +33,9 @@ class App extends Component {
         <div className="App-intro">
 
         <FetchDemo/>
-
+          <MuiThemeProvider>
+            <Settings label="Default" />
+            </MuiThemeProvider>
         </div>
       </div>
     );
@@ -92,10 +96,6 @@ class FetchDemo extends React.Component {
           that.setState({data: data.val()})
 
       });
-      // ref.limit(1).once("child_added", function (snapshot) {
-        // that.setState({arrivals :snapshot.val()});
-      // });
-
 
   }
       setInterval(getBusData, 30000);
