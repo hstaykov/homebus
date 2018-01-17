@@ -27,12 +27,15 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Home bus assistant</h1>
+          <h1 className="App-title">Бира и Шкембе</h1>
           <Clock/>
         </header>
         <div className="App-intro">
 
         <FetchDemo/>
+
+
+          <br></br>
           <MuiThemeProvider>
             <Settings label="Default" />
             </MuiThemeProvider>
@@ -101,7 +104,7 @@ class FetchDemo extends React.Component {
       setInterval(getBusData, 30000);
   }
     render(){
-      return this.state.data ? <div> Temperature: {this.state.data.temp}°C Humidity: {this.state.data.hum} % at {this.state.data.date.split(" ")[1]}</div> : <div> Loading ... </div>
+      return this.state.data ? <div> Temperature: {this.state.data.temp}°C Humidity: {this.state.data.hum} % at {this.state.data.date.split(" ")[1].split(".")[0]}</div> : <div> Loading ... </div>
     }
 }
 

@@ -14,11 +14,13 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: large;
+
 }
 
 .App-intro {
   font-size: large;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
